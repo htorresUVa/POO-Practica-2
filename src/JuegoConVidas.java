@@ -1,11 +1,16 @@
-public class JuegoConVidas {
+
+
+
+public abstract class JuegoConVidas {
     /**
      * Clase que representa un juego con vidas
      */
 
-    private int vidas;
+    public int vidas;
     private int vidas_iniciales;
     private int record = 0;
+
+    public abstract boolean juega(String cadena);
 
     public int getRecord() {
         return record;
@@ -20,16 +25,20 @@ public class JuegoConVidas {
         this.vidas_iniciales = vidas;
     }
 
-    public void muestraVidasIniciales() {
-        System.out.println("Vidas iniciales: " + this.vidas_iniciales);
-    }
 
-    public void muestraVidasRestantes() {
+    private void muestraVidasRestantes() {
         System.out.println("Vidas restantes: " + this.vidas);
     }
 
-    public void quitaVida() {
+    public boolean quitaVida() {
         this.vidas--;
+        if (this.vidas == 0) {
+            System.out.println("Juego terminado");
+            return false;
+        } else {
+            System.out.println("Te quedan " + this.vidas + " vidas");
+            return true;
+        }
     }
 
     public void reiniciaPartida() {

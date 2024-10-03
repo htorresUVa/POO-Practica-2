@@ -1,19 +1,16 @@
 
+import Entrada.MyInput;
 
 public class Main {
     public static void main(String[] args) {
-        JuegoConVidas juego = new JuegoConVidas(5);
-        juego.muestraVidasIniciales();
-        juego.quitaVida();
-
-        JuegoConVidas juego2 = new JuegoConVidas(5);
-        juego2.muestraVidasIniciales();
-        juego2.actualizaRecord();
-        juego2.quitaVida();
-
+        JuegoAdivinaNumero juego = new JuegoAdivinaNumero(3, 5);
         juego.reiniciaPartida();
-        juego.muestraVidasRestantes();
-        juego.actualizaRecord();
+        System.out.println("Introduce un número entre 0 y 10");
+        String end = MyInput.readString();
+        while (juego.juega(end)) {
+            System.out.println("Introduce un número entre 0 y 10");
+            end = MyInput.readString();
+        }
 
     }
 }
